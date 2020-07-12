@@ -28,36 +28,36 @@ target "common" {
 	args = {"GOCRONVER" = "$GOCRONVER"}
 }
 
-# target "debian" {
-# 	inherits = ["common"]
-# 	dockerfile = "Dockerfile-debian"
-# }
+target "debian" {
+	inherits = ["common"]
+	dockerfile = "Dockerfile-debian"
+}
 
 target "alpine" {
 	inherits = ["common"]
 	dockerfile = "Dockerfile-alpine"
 }
 
-# target "debian-latest" {
-# 	inherits = ["debian"]
-# 	args = {"BASETAG" = "$MAIN_TAG"}
-# 	tags = ["$IMAGE_NAME:latest", "$IMAGE_NAME:$MAIN_TAG"]
-# }
+target "debian-latest" {
+	inherits = ["debian"]
+	args = {"BASETAG" = "$MAIN_TAG"}
+	tags = ["$IMAGE_NAME:latest", "$IMAGE_NAME:$MAIN_TAG"]
+}
 
-# target "alpine-latest" {
-# 	inherits = ["alpine"]
-# 	args = {"BASETAG" = "$MAIN_TAG-alpine"}
-# 	tags = ["$IMAGE_NAME:alpine", "$IMAGE_NAME:$MAIN_TAG-alpine"]
-# }
+target "alpine-latest" {
+	inherits = ["alpine"]
+	args = {"BASETAG" = "$MAIN_TAG-alpine"}
+	tags = ["$IMAGE_NAME:alpine", "$IMAGE_NAME:$MAIN_TAG-alpine"]
+}
 EOF
 
 for TAG in $TAGS_EXTRA; do cat >> "$DOCKER_BAKE_FILE" << EOF
 
-# target "debian-$TAG" {
-#   inherits = ["debian"]
-# 	args = {"BASETAG" = "$TAG"}
-#   tags = ["$IMAGE_NAME:$TAG"]
-# }
+target "debian-$TAG" {
+  inherits = ["debian"]
+	args = {"BASETAG" = "$TAG"}
+  tags = ["$IMAGE_NAME:$TAG"]
+}
 
 target "alpine-$TAG" {
   inherits = ["alpine"]
