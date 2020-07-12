@@ -1,5 +1,5 @@
 group "default" {
-	targets = ["debian-latest", "alpine-latest", "debian-11", "debian-10", "debian-9.6", "debian-9.5", "debian-9.4", "alpine-11", "alpine-10", "alpine-9.6", "alpine-9.5", "alpine-9.4"]
+	targets = ["alpine-latest", "alpine-12", "alpine-11"]
 }
 
 target "common" {
@@ -7,84 +7,25 @@ target "common" {
 	args = {"GOCRONVER" = "v0.0.9"}
 }
 
-target "debian" {
-	inherits = ["common"]
-	dockerfile = "Dockerfile-debian"
-}
-
 target "alpine" {
 	inherits = ["common"]
 	dockerfile = "Dockerfile-alpine"
 }
 
-target "debian-latest" {
-	inherits = ["debian"]
-	args = {"BASETAG" = "12"}
-	tags = ["budelius/postgres-backup-local:latest", "budelius/postgres-backup-local:12"]
-}
-
 target "alpine-latest" {
 	inherits = ["alpine"]
-	args = {"BASETAG" = "12-alpine"}
-	tags = ["budelius/postgres-backup-local:alpine", "budelius/postgres-backup-local:12-alpine"]
+	args = {"BASETAG" = "13-alpine"}
+	tags = ["budelius/postgres-backup-local:alpine", "budelius/postgres-backup-local:13-alpine"]
 }
 
-target "debian-11" {
-  inherits = ["debian"]
-	args = {"BASETAG" = "11"}
-  tags = ["budelius/postgres-backup-local:11"]
+target "alpine-12" {
+  inherits = ["alpine"]
+	args = {"BASETAG" = "12-alpine"}
+  tags = ["budelius/postgres-backup-local:12-alpine"]
 }
 
 target "alpine-11" {
   inherits = ["alpine"]
 	args = {"BASETAG" = "11-alpine"}
   tags = ["budelius/postgres-backup-local:11-alpine"]
-}
-
-target "debian-10" {
-  inherits = ["debian"]
-	args = {"BASETAG" = "10"}
-  tags = ["budelius/postgres-backup-local:10"]
-}
-
-target "alpine-10" {
-  inherits = ["alpine"]
-	args = {"BASETAG" = "10-alpine"}
-  tags = ["budelius/postgres-backup-local:10-alpine"]
-}
-
-target "debian-9.6" {
-  inherits = ["debian"]
-	args = {"BASETAG" = "9.6"}
-  tags = ["budelius/postgres-backup-local:9.6"]
-}
-
-target "alpine-9.6" {
-  inherits = ["alpine"]
-	args = {"BASETAG" = "9.6-alpine"}
-  tags = ["budelius/postgres-backup-local:9.6-alpine"]
-}
-
-target "debian-9.5" {
-  inherits = ["debian"]
-	args = {"BASETAG" = "9.5"}
-  tags = ["budelius/postgres-backup-local:9.5"]
-}
-
-target "alpine-9.5" {
-  inherits = ["alpine"]
-	args = {"BASETAG" = "9.5-alpine"}
-  tags = ["budelius/postgres-backup-local:9.5-alpine"]
-}
-
-target "debian-9.4" {
-  inherits = ["debian"]
-	args = {"BASETAG" = "9.4"}
-  tags = ["budelius/postgres-backup-local:9.4"]
-}
-
-target "alpine-9.4" {
-  inherits = ["alpine"]
-	args = {"BASETAG" = "9.4-alpine"}
-  tags = ["budelius/postgres-backup-local:9.4-alpine"]
 }
