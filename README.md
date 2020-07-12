@@ -1,4 +1,4 @@
-![Docker Pulls](https://img.shields.io/docker/pulls/prodrigestivill/postgres-backup-local)
+![Docker Pulls](https://img.shields.io/docker/pulls/budelius/postgres-backup-local)
 
 # postgres-backup-local
 
@@ -11,7 +11,7 @@ Supports the following Docker architectures: `linux/amd64`, `linux/arm64`, `linu
 
 Docker:
 ```sh
-$ docker run -e POSTGRES_HOST=postgres -e POSTGRES_DB=dbname -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password  prodrigestivill/postgres-backup-local
+$ docker run -e POSTGRES_HOST=postgres -e POSTGRES_DB=dbname -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password  budelius/postgres-backup-local
 ```
 
 Docker Compose:
@@ -27,7 +27,7 @@ services:
             - POSTGRES_PASSWORD=password
          #  - POSTGRES_PASSWORD_FILE=/run/secrets/db_password <-- alternative for POSTGRES_PASSWORD (to use with docker secrets)
     pgbackups:
-        image: prodrigestivill/postgres-backup-local
+        image: budelius/postgres-backup-local
         restart: always
         volumes:
             - /var/opt/pgbackups:/backups
@@ -84,7 +84,7 @@ This variables are not intended to be used for normal deployment operations:
 By default this container makes daily backups, but you can start a manual backup by running `/backup.sh`:
 
 ```sh
-$ docker run -e POSTGRES_HOST=postgres -e POSTGRES_DB=dbname -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password  prodrigestivill/postgres-backup-local /backup.sh
+$ docker run -e POSTGRES_HOST=postgres -e POSTGRES_DB=dbname -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password  budelius/postgres-backup-local /backup.sh
 ```
 
 ### Automatic Periodic Backups
