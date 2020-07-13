@@ -6,7 +6,8 @@ DOCKER_BAKE_FILE=${1:-"docker-bake.hcl"}
 #TAGS=${TAGS:-"13 12 11 10 9.6 9.5 9.4"}
 TAGS=${TAGS:-"13 12"}
 GOCRONVER=${GOCRONVER:-"v0.0.9"}
-PLATFORMS=${PLATFORMS:-"linux/amd64 linux/arm64 linux/arm/v7"}
+PLATFORMS=${PLATFORMS:-"linux/amd64"}
+#PLATFORMS=${PLATFORMS:-"linux/amd64 linux/arm64 linux/arm/v7"}
 IMAGE_NAME=${IMAGE_NAME:-"budelius/postgres-backup-local"}
 
 cd "$(dirname "$0")"
